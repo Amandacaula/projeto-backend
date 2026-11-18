@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: digital-store-api
+  # Lê o .env da raiz quando a API roda fora do Docker (equivalente ao dotenv)
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:digital_store}
+    username: ${DB_USER:digital_store}
+    password: ${DB_PASSWORD:digital_store}
+  jpa:
+    hibernate:
+      ddl-auto: validate          # o schema é do Flyway; o Hibernate só confere
+    open-in-view: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 50   # evita N+1 em imagens/opções/categorias
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+server:
+  port: 8080
+  tomcat:
+    # Permite ?option[45]=GG sem precisar codificar os colchetes (%5B %5D)
+    relaxed-query-chars: "[,]"
+
+app:
+  base-url: ${APP_BASE_URL:http://localhost:8080}
+  upload-dir: ${UPLOAD_DIR:./uploads}
+  jwt:
+    secret: ${JWT_SECRET:}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:60}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

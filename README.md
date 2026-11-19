@@ -3,15 +3,6 @@
 API REST de e-commerce com CRUD de **usuários**, **categorias** e **produtos** (com imagens e opções),
 autenticação **JWT**, documentação **Swagger** e ambiente **Docker**.
 
-O enunciado original (escrito para Node.js) está em [`docs/ENUNCIADO.md`](docs/ENUNCIADO.md) e as
-especificações usadas na implementação estão em [`specs/`](specs/README.md).
-
-## Equipe
-
-- Nome 1
-- Nome 2
-- Nome 3
-
 ## Tecnologias
 
 O enunciado sugere ferramentas do ecossistema Node; esta implementação usa os equivalentes em Java:
